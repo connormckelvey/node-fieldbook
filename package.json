@@ -6,7 +6,20 @@
   "scripts": {
     "test": "mocha test"
   },
-  "author": "Connor McKelvey <connormckelvey@gmail.com> (http://www.connormckelvey.com)",
+  "author": {
+    "name": "Connor McKelvey",
+    "email": "connormckelvey@gmail.com",
+    "url": "http://www.connormckelvey.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/connormckelvey/node-fieldbook.git"
+  },
+  "keywords": [
+    "fieldbook",
+    "rest",
+    "api"
+  ],
   "license": "ISC",
   "dependencies": {
     "request": "^2.67.0"
