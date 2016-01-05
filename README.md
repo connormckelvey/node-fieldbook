@@ -3,7 +3,7 @@
 Node-Fieldbook is a node API wrapper for Fieldbook's REST API.
 
 ## Breaking Changes
-As of version 1.0.0, Node-Fieldbook provides a Promise-based API. Callback functions uses in previous versions are no longer available.
+As of version 1.0.0, Node-Fieldbook provides a Promise-based API. Callback functions used in previous versions are no longer available.
 
 ## Installation
 `npm install node-fieldbook --save`
