@@ -1,6 +1,6 @@
 {
   "name": "node-fieldbook",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Node API Wrapper for Fieldbook",
   "main": "index.js",
   "scripts": {
