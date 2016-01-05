@@ -36,39 +36,44 @@ describe('Helpers', function() {
   });
 
   describe('#handleFieldbookResponse', function() {
-    var error, response, body, callback, result;
+    var error, response, body, result;
 
     beforeEach(function() {
       error = new Error('Sample Error Message');
       response = { statusCode: 200 };
       body = { id: 1, name: 'Name' };
-      callback = function(error, body) {
-        if(error) {
-          return error
-        }
-        return 'success';
-      };
     });
 
     it('should throw "cannot connect error" if error argument truthy', function(){
-      result = helpers.handleFieldbookResponse(error, response, body, callback);
-      expect(result.message).to.equal('Unable to connect to the Fieldbook API endpoint because ' + error.message);
+      try {
+        var result = helpers.handleFieldbookResponse(error, response, body);
+      } catch (err) {
+        expect(err.message).to.equal('Unable to connect to the Fieldbook API endpoint because ' + error.message);
+      }
     });
 
     it('should throw "cannot parse json error" if body is not valid', function(){
       error = null;
       body = undefined;
-      result = helpers.handleFieldbookResponse(error, response, body, callback);
-      expect(result.message).to.equal('Error parsing JSON answer from Feildbook API');
+
+      try {
+        var result = helpers.handleFieldbookResponse(error, response, body);
+      } catch (err) {
+        expect(err.message).to.equal('Error parsing JSON answer from Feildbook API');
+      }
     });
 
     it('should throw "status code error" if statusCode does not fall in 200..299', function() {
       error = null;
       response.statusCode = 400;
       body = { message: 'Sample server error' };
-      result = helpers.handleFieldbookResponse(error, response, body, callback);      
-      expect(result.message).to.equal('Sample server error');
-      expect(result.code).to.equal(400);
+
+      try {
+        var result = helpers.handleFieldbookResponse(error, response, body);
+      } catch (err) {
+        expect(err.message).to.equal('Sample server error');
+        expect(err.code).to.equal(400);        
+      }
     });
   });
 });
