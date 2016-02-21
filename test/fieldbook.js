@@ -34,6 +34,14 @@ describe('FieldbookAPI', function() {
     }
   });
 
+  it('should return an instance of FieldbookAPI_v1_0 if public is true', function() {
+    options.username = null;
+    options.password = null;
+    options.public = true;
+    result = FieldbookAPI(options);
+    expect(result).to.instanceOf(FieldbookAPI_v1_0);
+  });
+
   it('should throw error if book is missing', function() {
     options.book = null;
     try {
@@ -44,8 +52,8 @@ describe('FieldbookAPI', function() {
   });
 
   it('should return an instance of FieldbookAPI_v1_0', function() {
-      result = FieldbookAPI(options);
-      expect(result).to.instanceOf(FieldbookAPI_v1_0);
+    result = FieldbookAPI(options);
+    expect(result).to.instanceOf(FieldbookAPI_v1_0);
   });
 
 });
