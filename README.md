@@ -8,7 +8,7 @@ As of version 1.0.0, Node-Fieldbook provides a Promise-based API. Callback funct
 ## Installation
 `npm install node-fieldbook --save`
 
-## Usage
+## Authenticated Usage
 ```javascript
 'use strict';
 var Fieldbook = require('node-fieldbook');
@@ -16,6 +16,16 @@ var Fieldbook = require('node-fieldbook');
 var book = new Fieldbook({
   username: 'key-1',
   password: '66-917-9bu-_vSv12kgv70gY--_vYl541-9fCl',
+  book: '365eb3263534950399fc5eb6'
+});
+```
+
+## [Public](https://github.com/fieldbook/api-docs/blob/master/reference.md#public-read-only-access) (Read-only) Usage
+```javascript
+'use strict';
+var Fieldbook = require('node-fieldbook');
+
+var book = new Fieldbook({
   book: '365eb3263534950399fc5eb6'
 });
 ```
