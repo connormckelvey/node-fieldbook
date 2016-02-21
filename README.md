@@ -8,7 +8,7 @@ As of version 1.0.0, Node-Fieldbook provides a Promise-based API. Callback funct
 ## Installation
 `npm install node-fieldbook --save`
 
-## Usage
+## Authenticated Usage
 ```javascript
 'use strict';
 var Fieldbook = require('node-fieldbook');
@@ -16,6 +16,16 @@ var Fieldbook = require('node-fieldbook');
 var book = new Fieldbook({
   username: 'key-1',
   password: '66-917-9bu-_vSv12kgv70gY--_vYl541-9fCl',
+  book: '365eb3263534950399fc5eb6'
+});
+```
+
+## [Public](https://github.com/fieldbook/api-docs/blob/master/reference.md#public-read-only-access) (Read-only) Usage
+```javascript
+'use strict';
+var Fieldbook = require('node-fieldbook');
+
+var book = new Fieldbook({
   book: '365eb3263534950399fc5eb6'
 });
 ```
@@ -119,6 +129,54 @@ Deletes a record by ID.
 ```javascript
 ...
 book.deleteRecord('contacts', 5)
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Add Webhook
+Registers a [webhook](https://github.com/fieldbook/api-docs/blob/master/reference.md#webhooks) to a book.
+
+##### Example
+```javascript
+...
+book.addWebhook({
+  url: 'https://example.com/callback', //Basic Auth: https://user:pass@example.com/callback
+  actions: ['create', 'update', 'destroy']
+})
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Get Webhooks
+Returns an array of current webhooks for a book.
+
+##### Example
+```javascript
+...
+book.getWebhooks()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Delete Webhook
+De-registers a webhook from a book.
+
+##### Example
+```javascript
+...
+book.deleteWebhook('26ca2a4f233547030eed28c10')
   .then((data) => {
     console.log(data);
   })
