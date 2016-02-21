@@ -126,3 +126,51 @@ book.deleteRecord('contacts', 5)
     console.log(error);
   });
 ```
+
+### Add Webhook
+Registers a [webhook](https://github.com/fieldbook/api-docs/blob/master/reference.md#webhooks) to a book.
+
+##### Example
+```javascript
+...
+book.addWebhook({
+  url: 'https://example.com/callback', //Basic Auth: https://user:pass@example.com/callback
+  actions: ['create', 'update', 'destroy']
+})
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Get Webhooks
+Returns an array of current webhooks for a book.
+
+##### Example
+```javascript
+...
+book.getWebhooks()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+### Delete Webhook
+De-registers a webhook from a book.
+
+##### Example
+```javascript
+...
+book.deleteWebhook('26ca2a4f233547030eed28c10')
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
